@@ -18,6 +18,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		add(new Pixel());
 	}
 	
 	/**
