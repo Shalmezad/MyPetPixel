@@ -12,22 +12,32 @@ class Pixel extends FlxGroup
 	var pxWidth:Int = 5;
 	var pxHeight:Int = 5;
 
+	public var power:Int = 0;
+	public var defense:Int = 0;
+	public var speed:Int = 0;
+	public var health:Int = 0;
+
 	public function new()
 	{
 		super();
 		//Let's make the graphic:
 		makeGraphicFromWord("HI!");
 	}
+
+	public function makeStatsFromWord(word:String):Void
+	{
+		FlxRandom.globalSeed = strTotal(word);
+		power = FlxRandom.intRanged(2,20);
+		defense = FlxRandom.intRanged(2,20);
+		speed = FlxRandom.intRanged(2,20);
+		health = FlxRandom.intRanged(2,20);
+	}
+
 	public function makeGraphicFromWord(word:String):Void
 	{
 		//clear what we have:
 		clear();
-		var total:Int = 0;
-		for(i in 0...word.length)
-		{
-			total += word.charCodeAt(i);
-		}
-		FlxRandom.globalSeed = total;
+		FlxRandom.globalSeed = strTotal(word);
 		//Go through each pixel:
 		for(i in 0...pxWidth)
 		{
@@ -44,6 +54,19 @@ class Pixel extends FlxGroup
 				}
 			}
 		}
+	}
+
+	/**
+	 * Returns an integer based on the string passed in. Used for seeding.
+	 */
+	private function strTotal(word:String):Int
+	{
+		var total:Int = 0;
+		for(i in 0...word.length)
+		{
+			total += word.charCodeAt(i);
+		}
+		return total;
 	}
 
 }
