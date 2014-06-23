@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.addons.ui.FlxUIInputText;
 import flixel.util.FlxMath;
 
 /**
@@ -12,13 +13,20 @@ import flixel.util.FlxMath;
  */
 class PlayState extends FlxState
 {
+	var pixel:Pixel;
+	var word:String;
+	var inputText:FlxUIInputText;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
 		super.create();
-		add(new Pixel());
+		pixel = new Pixel();
+		word = "";
+		inputText = new FlxUIInputText(70,50);
+		add(pixel);
+		add(inputText);
 	}
 	
 	/**
@@ -36,5 +44,10 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		super.update();
+		if(inputText.text != word)
+		{
+			word = inputText.text;
+			pixel.makeGraphicFromWord(word);
+		}
 	}	
 }
