@@ -5,7 +5,7 @@ import flixel.group.FlxGroup;
 //import flixel.math.FlxRandom;
 import flixel.util.FlxRandom;
 
-class Pixel extends FlxGroup
+class Pixel extends FlxGroupXY
 {
 	var gap:Int = 1;
 	var pxSize:Int = 4;
@@ -20,6 +20,7 @@ class Pixel extends FlxGroup
 	public function new()
 	{
 		super();
+		x = 50;
 		//Let's make the graphic:
 		makeGraphicFromWord("HI!");
 	}
@@ -47,7 +48,7 @@ class Pixel extends FlxGroup
 				if(FlxRandom.chanceRoll())
 				{
 					//yep
-					var spr:FlxSprite = new FlxSprite(i * (pxSize + gap), j * (pxSize + gap));
+					var spr:FlxSprite = new FlxSprite(i * (pxSize + gap) + x, j * (pxSize + gap) + y);
 					var col:Int = FlxRandom.color(100, 255);
 					spr.makeGraphic(pxSize, pxSize, col);
 					add(spr);
