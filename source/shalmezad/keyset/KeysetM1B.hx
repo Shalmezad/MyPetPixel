@@ -21,7 +21,7 @@ class KeysetM1B
 	}
 	private static function get_DOWN():Bool
 	{
-		return FlxG.keys.pressed.DOWN || FlxG.keys.pressed.D;
+		return FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S;
 	}
 	private static function get_LEFT():Bool
 	{
