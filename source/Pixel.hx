@@ -1,12 +1,14 @@
 package;
 
 import flixel.FlxSprite;
+import flixel.FlxG;
 import flixel.group.FlxGroup;
 //import flixel.math.FlxRandom;
 import flixel.util.FlxRandom;
 
 class Pixel extends FlxGroupXY
 {
+	var speedMultiplier:Float = 20;
 	var gap:Int = 1;
 	var pxSize:Int = 4;
 	var pxWidth:Int = 5;
@@ -16,6 +18,7 @@ class Pixel extends FlxGroupXY
 	public var defense:Int = 0;
 	public var speed:Int = 0;
 	public var health:Int = 0;
+	public var controllable:Bool = false;
 
 	public function new()
 	{
@@ -68,6 +71,37 @@ class Pixel extends FlxGroupXY
 			total += word.charCodeAt(i);
 		}
 		return total;
+	}
+
+	override public function update():Void
+	{
+		super.update();
+		if(controllable)
+		{
+			handleInput();
+		}
+	}
+
+	private function handleInput():Void
+	{
+		velocity.x = 0;
+		velocity.y = 0;
+		if(FlxG.keys.pressed.LEFT)
+		{
+			velocity.x = -1 * speed * speedMultiplier;	
+		}
+		else if (FlxG.keys.pressed.RIGHT)
+		{
+			velocity.x = speed * speedMultiplier;
+		}
+		if(FlxG.keys.pressed.UP)
+		{
+			velocity.y = -1 * speed * speedMultiplier;
+		}
+		else if (FlxG.keys.pressed.DOWN)
+		{
+			velocity.y = speed * speedMultiplier;
+		}
 	}
 
 }
