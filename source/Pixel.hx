@@ -91,6 +91,7 @@ class Pixel extends FlxGroupXY
 		for(i in 0...word.length)
 		{
 			total += word.charCodeAt(i);
+			total *= 10;
 		}
 		return total;
 	}
