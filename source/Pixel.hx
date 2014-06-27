@@ -11,7 +11,7 @@ class Pixel extends FlxGroupXY
 {
 	var speedMultiplier:Float = 1;
 	var gap:Int = 1;
-	var pxSize:Int = 4;
+	var pxSize:Int = 8;
 	var pxWidth:Int = 5;
 	var pxHeight:Int = 5;
 

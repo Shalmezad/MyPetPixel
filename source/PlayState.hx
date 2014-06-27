@@ -12,6 +12,7 @@ class PlayState extends FlxState
 {
 	public var player:Pixel;
 	var spawner:Spawner;
+	var gui:GUI;
 
 	public function new():Void
 	{
@@ -30,9 +31,12 @@ class PlayState extends FlxState
 		player.controllable = true;
 		//build the enemies
 		spawner = new Spawner();
+		//make the gui
+		gui = new GUI();
 
 		add(player);
 		add(spawner);
+		add(gui);
 	}
 	
 	override public function destroy():Void
