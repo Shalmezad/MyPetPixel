@@ -17,7 +17,7 @@ class EnemyPixel extends Pixel
 		x = 640;
 		//set a course:
 		velocity.x = -1 * speed * speedMultiplier;
-		y = FlxRnadom.intRanged(0,480-height);
+		y = FlxRandom.intRanged(0,480-height);
 		alive = true;
 	}
 

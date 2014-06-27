@@ -11,6 +11,7 @@ import flixel.util.FlxMath;
 class PlayState extends FlxState
 {
 	var player:Pixel;
+	var spawner:Spawner;
 	override public function create():Void
 	{
 		super.create();
@@ -20,6 +21,9 @@ class PlayState extends FlxState
 		player.makeStatsFromWord(Reg.word);
 		player.controllable = true;
 		add(player);
+		//build the enemies
+		spawner = new Spawner();
+		add(spawner);
 	}
 	
 	override public function destroy():Void

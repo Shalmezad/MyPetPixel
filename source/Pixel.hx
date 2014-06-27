@@ -9,7 +9,7 @@ import flixel.util.FlxRandom;
 
 class Pixel extends FlxGroupXY
 {
-	var speedMultiplier:Float = 20;
+	var speedMultiplier:Float = 1;
 	var gap:Int = 1;
 	var pxSize:Int = 4;
 	var pxWidth:Int = 5;
@@ -21,9 +21,14 @@ class Pixel extends FlxGroupXY
 	public var health:Int = 0;
 	public var controllable:Bool = false;
 
+	public var width:Int;
+	public var height:Int;
+
 	public function new()
 	{
 		super();
+		width = pxWidth * (pxSize + gap);
+		height = pxHeight * (pxSize * gap);
 		x = 50;
 		//Let's make the graphic:
 		//makeGraphicFromWord("HI!");

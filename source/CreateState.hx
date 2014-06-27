@@ -25,7 +25,7 @@ class CreateState extends FlxState
 		//make stuff
 		pixel = new Pixel();
 		word = "";
-		pixel.makeGraphicFromWord();
+		pixel.makeGraphicFromWord(word);
 		inputText = new FlxUIInputText(20,70);
 		var button:FlxButton = new FlxButton(20,90,"Make Pixel!", makePixel);
 		powerStat = new FlxText(20,120,200, "Power: ");
@@ -41,6 +41,7 @@ class CreateState extends FlxState
 		add(defenseStat);
 		add(speedStat);
 		add(healthStat);
+		add(goButton);
 	}
 	
 	/**
