@@ -1,6 +1,7 @@
 package;
 
 import shalmezad.keyset.KeysetM1B;
+import shalmezad.flxplus.FlxGroupXY;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
@@ -53,7 +54,7 @@ class Pixel extends FlxGroupXY
 					//yep
 					var spr:FlxSprite = new FlxSprite(i * (pxSize + gap) + x, j * (pxSize + gap) + y);
 					var col:Int = FlxRandom.color(100, 255);
-					spr.makeGraphic(pxSize, pxSize, col);
+				spr.makeGraphic(pxSize, pxSize, col);
 					add(spr);
 				}
 			}

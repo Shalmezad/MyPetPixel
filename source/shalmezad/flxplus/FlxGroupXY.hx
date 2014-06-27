@@ -1,4 +1,4 @@
-package;
+package shalmezad.flxplus;
 
 import flixel.group.FlxGroup;
 import flixel.FlxBasic;
