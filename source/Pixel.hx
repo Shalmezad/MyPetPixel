@@ -1,9 +1,9 @@
 package;
 
+import shalmezad.keyset.KeysetM1B;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
-//import flixel.math.FlxRandom;
 import flixel.util.FlxRandom;
 
 class Pixel extends FlxGroupXY
@@ -86,19 +86,23 @@ class Pixel extends FlxGroupXY
 	{
 		velocity.x = 0;
 		velocity.y = 0;
-		if(FlxG.keys.pressed.LEFT)
+		//if(FlxG.keys.pressed.LEFT)
+		if (KeysetM1B.LEFT && !KeysetM1B.RIGHT)
 		{
 			velocity.x = -1 * speed * speedMultiplier;	
 		}
-		else if (FlxG.keys.pressed.RIGHT)
+		//else if (FlxG.keys.pressed.RIGHT)
+		else if (KeysetM1B.RIGHT && !KeysetM1B.LEFT)
 		{
 			velocity.x = speed * speedMultiplier;
 		}
-		if(FlxG.keys.pressed.UP)
+		//if (FlxG.keys.pressed.UP)
+		if (KeysetM1B.UP && !KeysetM1B.DOWN)
 		{
 			velocity.y = -1 * speed * speedMultiplier;
 		}
-		else if (FlxG.keys.pressed.DOWN)
+		//else if (FlxG.keys.pressed.DOWN)
+		else if (KeysetM1B.DOWN && !KeysetM1B.UP)
 		{
 			velocity.y = speed * speedMultiplier;
 		}
