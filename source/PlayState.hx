@@ -47,5 +47,10 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		super.update();
+		if(!player.is_flickering() && FlxG.overlap(player, spawner))
+		{
+			player.health -= 1;
+			player.flicker(1);
+		}
 	}	
 }
