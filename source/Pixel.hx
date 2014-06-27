@@ -32,6 +32,11 @@ class Pixel extends FlxGroupXY
 	public function makeStatsFromWord(word:String):Void
 	{
 		FlxRandom.globalSeed = strTotal(word);
+		makeStats();
+	}
+
+	private function makeStats():Void
+	{
 		power = FlxRandom.intRanged(2,20);
 		defense = FlxRandom.intRanged(2,20);
 		speed = FlxRandom.intRanged(2,20);
