@@ -26,7 +26,7 @@ class Pixel extends FlxGroupXY
 		super();
 		x = 50;
 		//Let's make the graphic:
-		makeGraphicFromWord("HI!");
+		//makeGraphicFromWord("HI!");
 	}
 
 	public function makeStatsFromWord(word:String):Void
@@ -43,6 +43,11 @@ class Pixel extends FlxGroupXY
 		//clear what we have:
 		clear();
 		FlxRandom.globalSeed = strTotal(word);
+		makeGraphic();
+	}
+
+	private function makeGraphic():Void
+	{
 		//Go through each pixel:
 		for(i in 0...pxWidth)
 		{
@@ -53,12 +58,18 @@ class Pixel extends FlxGroupXY
 				{
 					//yep
 					var spr:FlxSprite = new FlxSprite(i * (pxSize + gap) + x, j * (pxSize + gap) + y);
-					var col:Int = FlxRandom.color(100, 255);
+					var col:Int = getRandomColor();
 				spr.makeGraphic(pxSize, pxSize, col);
 					add(spr);
 				}
 			}
 		}
+	}
+
+	private function getRandomColor():Int
+	{
+		//return FlxRandom.color(100, 255);
+		return FlxRandom.colorExt(0,100, 150,255);
 	}
 
 	/**
