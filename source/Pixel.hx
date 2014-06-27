@@ -19,6 +19,7 @@ class Pixel extends FlxGroupXY
 	public var defense:Int = 0;
 	public var speed:Int = 0;
 	public var health:Int = 0;
+	public var max_health:Int = 0;
 	public var controllable:Bool = false;
 
 	public var width:Int;
@@ -46,6 +47,7 @@ class Pixel extends FlxGroupXY
 		defense = FlxRandom.intRanged(2,20);
 		speed = FlxRandom.intRanged(2,20);
 		health = FlxRandom.intRanged(2,20);
+		max_health = health;
 	}
 
 	public function makeGraphicFromWord(word:String):Void
@@ -128,6 +130,28 @@ class Pixel extends FlxGroupXY
 		else if (KeysetM1B.DOWN && !KeysetM1B.UP)
 		{
 			velocity.y = speed * speedMultiplier;
+		}
+		//NOTE: If we're input based, keep us on screen:
+		keepInBounds();
+	}
+
+	private function keepInBounds():Void
+	{
+		if (x < 0) 
+		{
+			x = 0;
+		}
+		else if (x + width > 640)
+		{
+			x = 640 - width;
+		}
+		if (y < 0)
+		{
+			y = 0;
+		}
+		else if (y + height > 480)
+		{
+			y = 480 - height;
 		}
 	}
 

@@ -10,19 +10,28 @@ import flixel.util.FlxMath;
 
 class PlayState extends FlxState
 {
-	var player:Pixel;
+	public var player:Pixel;
 	var spawner:Spawner;
+
+	public function new():Void
+	{
+		super();
+		Reg.PS = this;
+	}
+
 	override public function create():Void
 	{
 		super.create();
+
 		//build the player
 		player = new Pixel();
 		player.makeGraphicFromWord(Reg.word);
 		player.makeStatsFromWord(Reg.word);
 		player.controllable = true;
-		add(player);
 		//build the enemies
 		spawner = new Spawner();
+
+		add(player);
 		add(spawner);
 	}
 	
