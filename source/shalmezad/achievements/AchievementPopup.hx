@@ -17,6 +17,7 @@ class AchievementPopup extends FlxGroup
 
 	private var currentState:PopupState = WAITING;
 	private var titleText:FlxText;
+	private var subtitleText:FlxText;
 	private var currentStateCount:Int = 0;
 
 	public function new():Void
@@ -25,6 +26,9 @@ class AchievementPopup extends FlxGroup
 		titleText = new FlxText(20,400,200,"");
 		titleText.visible = false;
 		add(titleText);
+		subtitleText = new FlxText(20,420,200,"");
+		subtitleText.visible = false;
+		add(subtitleText);
 	}
 
 	override public function update():Void
@@ -55,12 +59,15 @@ class AchievementPopup extends FlxGroup
 	{
 		titleText.text = a.title;
 		titleText.visible = true;
+		subtitleText.text = a.subtitle;
+		subtitleText.visible = true;
 		switchState(SHOWING);
 	}
 
 	private function hideAchievement():Void
 	{
 		titleText.visible = false;
+		subtitleText.visible = false;
 		switchState(WAITING);	
 	}
 

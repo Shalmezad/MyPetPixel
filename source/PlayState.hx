@@ -9,6 +9,7 @@ import flixel.addons.ui.FlxUIInputText;
 import flixel.util.FlxMath;
 
 import achievements.AchieveSuicidal;
+import achievements.AchieveTurtle;
 import shalmezad.achievements.AchievementSystem;
 
 class PlayState extends FlxState
@@ -53,11 +54,10 @@ class PlayState extends FlxState
 		super.update();
 		if(!player.is_flickering() && FlxG.overlap(player, spawner))
 		{
+			AchieveTurtle.hitCount++;
 			player.health -= 1;
 			player.flicker(1);
-			//TODO: Take this out
-			//if(player.health <= 0)
-			if(true)
+			if(player.health <= 0)
 			{
 				//Game over, go back to main menu
 				AchieveSuicidal.deathCount++;

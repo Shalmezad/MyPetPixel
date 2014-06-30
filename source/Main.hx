@@ -74,6 +74,7 @@ class Main extends Sprite
 	private function loadAchievements():Void
 	{
 		AchievementSystem.addAchievement(new AchieveSuicidal());
+		AchievementSystem.addAchievement(new AchieveTurtle());
 	}
 
 }
