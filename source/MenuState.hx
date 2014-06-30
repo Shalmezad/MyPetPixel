@@ -18,8 +18,9 @@ class MenuState extends FlxState
 		super.create();
 		var startButton:FlxCenterButton = new FlxCenterButton(Main.gameWidth/2, 200,"START", startGame);
 		add(startButton);
-		trace("Have we earned achievement? ");
+		//do a quick check on the existing achievments
 		AchievementSystem.checkAchievements();
+		//add the achievement popup. It'll automatically display achievements.
 		add(new AchievementPopup());
 	}
 
