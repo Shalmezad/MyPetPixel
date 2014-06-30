@@ -41,7 +41,6 @@ class PlayState extends FlxState
 		add(spawner);
 		add(gui);
 
-		AchievementSystem.addAchievement(new AchieveSuicidal());
 	}
 	
 	override public function destroy():Void

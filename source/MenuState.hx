@@ -9,6 +9,7 @@ import flixel.util.FlxMath;
 import shalmezad.flxplus.FlxCenterButton;
 import shalmezad.achievements.Achievement;
 import shalmezad.achievements.AchievementSystem;
+import shalmezad.achievements.AchievementPopup;
 
 class MenuState extends FlxState
 {
@@ -19,11 +20,7 @@ class MenuState extends FlxState
 		add(startButton);
 		trace("Have we earned achievement? ");
 		AchievementSystem.checkAchievements();
-		var a:Achievement = AchievementSystem.nextNotSeen();
-		if(a != null)
-		{
-			trace("EARNED: " + a.title);
-		}
+		add(new AchievementPopup());
 	}
 
 	private function startGame():Void
