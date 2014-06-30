@@ -7,6 +7,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.addons.ui.FlxUIInputText;
 import flixel.util.FlxMath;
+import shalmezad.flxplus.FlxCenterButton;
 
 class CreateState extends FlxState
 {
@@ -27,12 +28,14 @@ class CreateState extends FlxState
 		word = "";
 		pixel.makeGraphicFromWord(word);
 		inputText = new FlxUIInputText(20,70);
-		var button:FlxButton = new FlxButton(20,90,"Make Pixel!", makePixel);
+		//var button:FlxButton = new FlxButton(20,90,"Make Pixel!", makePixel);
+		var button:FlxCenterButton = new FlxCenterButton(Main.gameWidth/2,90,"Make Pixel!", makePixel);
 		powerStat = new FlxText(20,120,200, "Power: ");
 		defenseStat = new FlxText(20, 130,200, "Defense: ");
 		speedStat = new FlxText(20, 140,200, "Speed: ");
 		healthStat = new FlxText(20, 150,200, "Health: ");
-		var goButton:FlxButton = new FlxButton(20, 200, "GO!", startGame);
+		//var goButton:FlxButton = new FlxButton(20, 200, "GO!", startGame);
+		var goButton:FlxCenterButton = new FlxCenterButton(Main.gameHeight/2,200,"GO!",startGame);
 		//put it on the screen
 		add(button);
 		add(pixel);

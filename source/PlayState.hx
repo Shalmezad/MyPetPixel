@@ -8,6 +8,9 @@ import flixel.ui.FlxButton;
 import flixel.addons.ui.FlxUIInputText;
 import flixel.util.FlxMath;
 
+import achievements.AchieveSuicidal;
+import shalmezad.achievements.AchievementSystem;
+
 class PlayState extends FlxState
 {
 	public var player:Pixel;
@@ -37,6 +40,8 @@ class PlayState extends FlxState
 		add(player);
 		add(spawner);
 		add(gui);
+
+		AchievementSystem.addAchievement(new AchieveSuicidal());
 	}
 	
 	override public function destroy():Void
@@ -51,6 +56,14 @@ class PlayState extends FlxState
 		{
 			player.health -= 1;
 			player.flicker(1);
+			//TODO: Take this out
+			//if(player.health <= 0)
+			if(true)
+			{
+				//Game over, go back to main menu
+				AchieveSuicidal.deathCount++;
+				FlxG.switchState(new MenuState());				
+			}
 		}
 	}	
 }
