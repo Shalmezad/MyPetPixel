@@ -8,6 +8,8 @@ class AchieveTurtle extends Achievement
 
 	public function new()
 	{
+		earnedIconLocation = "assets/images/turtle_earned.png";
+		unearnedIconOverlayLocation = "assets/images/turtle_unearned.png";
 		title = "Turtle";
 		subtitle = "Take a lickin'. Keep on tickin'.";
 	}

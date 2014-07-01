@@ -2,6 +2,7 @@ package shalmezad.achievements;
 
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
+import flixel.FlxSprite;
 
 enum PopupState {
 	WAITING;	//Popup is waiting for an achievement to show
@@ -18,6 +19,7 @@ class AchievementPopup extends FlxGroup
 	private var currentState:PopupState = WAITING;
 	private var titleText:FlxText;
 	private var subtitleText:FlxText;
+	private var icon:FlxSprite;
 	private var currentStateCount:Int = 0;
 
 	public function new():Void
@@ -29,6 +31,9 @@ class AchievementPopup extends FlxGroup
 		subtitleText = new FlxText(20,420,200,"");
 		subtitleText.visible = false;
 		add(subtitleText);
+		icon = new FlxSprite(0,400);
+		icon.visible = false;
+		add(icon);
 	}
 
 	override public function update():Void
@@ -61,6 +66,7 @@ class AchievementPopup extends FlxGroup
 		titleText.visible = true;
 		subtitleText.text = a.subtitle;
 		subtitleText.visible = true;
+		icon.loadGraphic(a.earnedIconLocation);
 		switchState(SHOWING);
 	}
 
@@ -68,6 +74,7 @@ class AchievementPopup extends FlxGroup
 	{
 		titleText.visible = false;
 		subtitleText.visible = false;
+		icon.visible = false;
 		switchState(WAITING);	
 	}
 

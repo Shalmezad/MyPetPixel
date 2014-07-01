@@ -8,7 +8,8 @@ class AchieveSuicidal extends Achievement
 
 	public function new()
 	{
-
+		earnedIconLocation = "assets/images/suicide_earned.png";
+		unearnedIconOverlayLocation = "assets/images/suicide_unearned.png";
 		title = "Suicidal";
 		subtitle = "Died (a lot)";
 	}
