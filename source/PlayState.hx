@@ -18,6 +18,7 @@ import achievements.AchieveTurtle;
 class PlayState extends FlxState
 {
 	public var player:Pixel;
+	public var score:Int;
 	//The bullets are public so they can be accessed by the 'shooting' objects (players/enemies)
 	public var enemyBullets:FlxTypedGroup<Bullet>;
 	public var playerBullets:FlxTypedGroup<Bullet>;
@@ -29,6 +30,7 @@ class PlayState extends FlxState
 	{
 		super();
 		Reg.PS = this;
+		score = 0;
 	}
 
 	override public function create():Void
@@ -36,8 +38,7 @@ class PlayState extends FlxState
 		super.create();
 
 		//build the player
-		player = new Pixel();
-		player.makeGraphicFromWord(Reg.word);
+		player = new Pixel(); player.makeGraphicFromWord(Reg.word);
 		player.makeStatsFromWord(Reg.word);
 		player.controllable = true;
 
@@ -104,6 +105,7 @@ class PlayState extends FlxState
 	private function bulletEnemyOverlap(bullet:Dynamic, enemy:Dynamic):Void
 	{
 		enemy.hurt(bullet.damage);
+		score += 1;
 	}
 
 }

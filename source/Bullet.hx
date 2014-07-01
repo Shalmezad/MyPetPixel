@@ -15,7 +15,7 @@ class Bullet extends FlxSprite
 		var color:Int = 0xFFFFFFFF;
 		//higher damage = brighter bullet. 
 		color = FlxRandom.color(Std.int(damage*150/20 + 105), Std.int(damage*150/20 + 105));
-		makeGraphic(2,2,color);
+		makeGraphic(4,4,color);
 		if(pixel.controllable)
 		{
 			velocity.x = pixel.speed * speedMultiplier;
