@@ -29,6 +29,10 @@ class EnemyPixel extends Pixel
 	override public function update():Void
 	{
 		super.update();
+		if(countLiving() <=1)
+		{
+			kill();
+		}
 		if(x + width < 0)
 		{
 			kill();

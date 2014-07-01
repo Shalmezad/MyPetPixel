@@ -87,7 +87,7 @@ class PlayState extends FlxState
 		FlxG.overlap(playerBullets, spawner, bulletEnemyOverlap);
 	}
 
-	private function bulletPlayerOverlap(bullet:Dynamic, player:Dynamic):Void
+	private function bulletPlayerOverlap(bullet:Dynamic, p:Dynamic):Void
 	{
 		if(player.hurt(bullet.damage))
 		{
