@@ -194,9 +194,16 @@ class Pixel extends FlxGroupXY
 	
 	public function hurt(damage:Int):Bool
 	{
+		var maxDamage:Int = defense - damage;
+		//bullets always hurt
+		if(maxDamage <= 0) maxDamage = 1;
+		//but we don't want UBEROVERKILL!!!1!!
+		if(maxDamage >= 5) maxDamage = 5;
+	
 		if(!is_flickering())
 		{
-			health -= 1;
+			//Even then, the damage is random:
+			health -= FlxRandom.intRanged(1,damage);
 			flicker(1);
 			if(health <= 0)
 			{

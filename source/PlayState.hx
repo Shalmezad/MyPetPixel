@@ -81,18 +81,15 @@ class PlayState extends FlxState
 
 	private function handleCollisions():Void
 	{
-		//if player-enemy or player-enemy_bullet, hurt player:
-		if(FlxG.overlap(player, spawner) && FlxG.overlap(player, enemyBullets))
-		{
-			hurtPlayer();	
-		}
+		//enemy_bullet-player = hurt player
+		FlxG.overlap(enemyBullets, player, bulletPlayerOverlap);
 		//player_bullet-enemy = hurt enemy:
 		FlxG.overlap(playerBullets, spawner, bulletEnemyOverlap);
 	}
 
-	private function hurtPlayer():Void
+	private function bulletPlayerOverlap(bullet:Dynamic, player:Dynamic):Void
 	{
-		if(player.hurt(1))
+		if(player.hurt(bullet.damage))
 		{
 			AchieveTurtle.hitCount++;
 			if(player.health <= 0)
@@ -106,7 +103,7 @@ class PlayState extends FlxState
 
 	private function bulletEnemyOverlap(bullet:Dynamic, enemy:Dynamic):Void
 	{
-		enemy.hurt(1);
+		enemy.hurt(bullet.damage);
 	}
 
 }
