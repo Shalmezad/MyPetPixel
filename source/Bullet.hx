@@ -10,7 +10,7 @@ class Bullet extends FlxSprite
 	public var damage:Int = 1;
 	public function resetBullet(pixel:Pixel)
 	{
-		reset(pixel.x, pixel.y);
+		reset(pixel.x, pixel.y + pixel.height/2);
 		damage = FlxRandom.intRanged(1, pixel.power);
 		var color:Int = 0xFFFFFFFF;
 		//higher damage = brighter bullet. 

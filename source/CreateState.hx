@@ -23,20 +23,26 @@ class CreateState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		var centerX:Float= Main.gameWidth/2;
 		//make stuff
 		pixel = new Pixel();
 		pixel.active = false;
 		word = "";
 		pixel.makeGraphicFromWord(word);
+		pixel.x = Main.gameWidth/2 - pixel.width/2;
+		pixel.y = 10;
 		inputText = new FlxUIInputText(20,70);
-		//var button:FlxButton = new FlxButton(20,90,"Make Pixel!", makePixel);
-		var button:FlxCenterButton = new FlxCenterButton(Main.gameWidth/2,90,"Make Pixel!", makePixel);
-		powerStat = new FlxText(20,120,200, "Power: ");
-		defenseStat = new FlxText(20, 130,200, "Defense: ");
-		speedStat = new FlxText(20, 140,200, "Speed: ");
-		healthStat = new FlxText(20, 150,200, "Health: ");
-		//var goButton:FlxButton = new FlxButton(20, 200, "GO!", startGame);
-		var goButton:FlxCenterButton = new FlxCenterButton(Main.gameHeight/2,200,"GO!",startGame);
+		inputText.x = Main.gameWidth/2 - inputText.width / 2;
+		var button:FlxCenterButton = new FlxCenterButton(Main.gameWidth/2,100,"Make Pixel!", makePixel);
+		powerStat = new FlxText(centerX-100,120,200, "Power: ");
+		powerStat.alignment = "center";
+		defenseStat = new FlxText(centerX-100, 130,200, "Defense: ");
+		defenseStat .alignment = "center";
+		speedStat = new FlxText(centerX-100, 140,200, "Speed: ");
+		speedStat .alignment = "center";
+		healthStat = new FlxText(centerX-100, 150,200, "Health: ");
+		healthStat .alignment = "center";
+		var goButton:FlxCenterButton = new FlxCenterButton(Main.gameWidth/2,200,"GO!",startGame);
 		//put it on the screen
 		add(button);
 		add(pixel);
