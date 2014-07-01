@@ -25,9 +25,12 @@ class Pixel extends FlxGroupXY
 	public var width:Int;
 	public var height:Int;
 
+	private var cooldown:Int = 0;
+
 	public function new()
 	{
 		super();
+		active = true;
 		width = pxWidth * (pxSize + gap);
 		height = pxHeight * (pxSize * gap);
 		x = 50;
@@ -101,9 +104,18 @@ class Pixel extends FlxGroupXY
 	override public function update():Void
 	{
 		super.update();
-		if(controllable)
+		if(active && alive)
 		{
-			handleInput();
+			if(controllable)
+			{
+				handleInput();
+			}
+			else
+			{
+				//computers always shoot when possible
+				tryShot();
+			}
+			cooldown--;
 		}
 	}
 
@@ -116,20 +128,22 @@ class Pixel extends FlxGroupXY
 		{
 			velocity.x = -1 * speed * speedMultiplier;	
 		}
-		//else if (FlxG.keys.pressed.RIGHT)
 		else if (KeysetM1B.RIGHT && !KeysetM1B.LEFT)
 		{
 			velocity.x = speed * speedMultiplier;
 		}
-		//if (FlxG.keys.pressed.UP)
 		if (KeysetM1B.UP && !KeysetM1B.DOWN)
 		{
 			velocity.y = -1 * speed * speedMultiplier;
 		}
-		//else if (FlxG.keys.pressed.DOWN)
 		else if (KeysetM1B.DOWN && !KeysetM1B.UP)
 		{
 			velocity.y = speed * speedMultiplier;
+		}
+		//handle shooting while we're at it 
+		if (KeysetM1B.SHOOT)
+		{
+			tryShot();	
 		}
 		//NOTE: If we're input based, keep us on screen:
 		keepInBounds();
@@ -155,4 +169,41 @@ class Pixel extends FlxGroupXY
 		}
 	}
 
+
+	private function tryShot():Void
+	{
+		if(cooldown <= 0)
+		{	
+			//success, shoot
+			//recycle a bullet:
+			var bullet:Bullet = null;
+			if(controllable)
+			{
+				bullet = Reg.PS.playerBullets.recycle(Bullet);
+			}
+			else
+			{
+				bullet = Reg.PS.enemyBullets.recycle(Bullet);
+			}
+			bullet.resetBullet(this);
+			//reset it:
+			//reset the cooldown so they're not spamming it:
+			cooldown = 25 - speed;
+		}
+	}
+	
+	public function hurt(damage:Int):Bool
+	{
+		if(!is_flickering())
+		{
+			health -= 1;
+			flicker(1);
+			if(health <= 0)
+			{
+				kill();
+			}
+			return true;
+		}
+		return false;
+	}
 }

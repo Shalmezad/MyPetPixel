@@ -14,7 +14,7 @@ enum PopupState {
 
 class AchievementPopup extends FlxGroup
 {
-	private var showLength:Int = 60;
+	private var showLength:Int = 180;
 
 	private var currentState:PopupState = WAITING;
 	private var titleText:FlxText;

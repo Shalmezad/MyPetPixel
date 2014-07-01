@@ -25,6 +25,7 @@ class CreateState extends FlxState
 		super.create();
 		//make stuff
 		pixel = new Pixel();
+		pixel.active = false;
 		word = "";
 		pixel.makeGraphicFromWord(word);
 		inputText = new FlxUIInputText(20,70);
