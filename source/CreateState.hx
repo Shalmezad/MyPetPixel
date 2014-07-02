@@ -43,6 +43,10 @@ class CreateState extends FlxState
 		healthStat = new FlxText(centerX-100, 150,200, "Health: ");
 		healthStat .alignment = "center";
 		var goButton:FlxCenterButton = new FlxCenterButton(Main.gameWidth/2,200,"GO!",startGame);
+		var instructions:String = "Instructions: Type in a name, and click 'Make Pixel' to build a pixel. Better words = better pixels!";
+		var instText = new FlxText(50, 300, Main.gameWidth - 100, instructions);
+		instText.alignment = "center";
+
 		//put it on the screen
 		add(button);
 		add(pixel);
@@ -51,6 +55,7 @@ class CreateState extends FlxState
 		add(defenseStat);
 		add(speedStat);
 		add(healthStat);
+		add(instText);
 		add(goButton);
 	}
 	
